@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:SkieurMVVML"
+             x:Class="SkieurMVVML.MainPage"
+             BindingContext="{Binding Main,Source={StaticResource Locator}}">
+
+    <StackLayout>
+        <!-- Place new controls here -->
+        <ListView x:Name="lstSkieur" 
+                  SelectedItem="{Binding SelectedSkieur}"
+                  ItemTemplate="{StaticResource lstSkieurDesign}"
+                  ItemsSource="{Binding Skieurs}">
+        </ListView>
+        <!--<Button Text="Go to" Command="{Binding Path=NavigateToCommand}"
+                CommandParameter="DetailPage"/>-->
+    </StackLayout>
+
+</ContentPage>

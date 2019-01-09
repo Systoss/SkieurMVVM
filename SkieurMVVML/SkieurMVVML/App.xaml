@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SkieurMVVML.App"
+             xmlns:vm="clr-namespace:SkieurMVVML.ViewModel">
+    <Application.Resources>
+        <vm:ViewModelLocator x:Key="Locator"></vm:ViewModelLocator>
+        <ResourceDictionary>
+            <DataTemplate x:Key="lstSkieurDesign">
+                <ViewCell>
+                    <StackLayout>
+                        <Label Text="{Binding LastName}"/>
+                        <Label Text="{Binding FirstName}"/>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+            <Style x:Key="lastName" TargetType="Label">
+
+                <Setter Property="FontSize" Value="Medium"></Setter>
+
+                <Setter Property="TextColor" Value="Red"></Setter>
+
+            </Style>
+
+            <DataTemplate x:Key="detail">
+
+                <ViewCell>
+
+                    <StackLayout Orientation="Horizontal"
+
+                                 BackgroundColor="Blue">
+
+                        <StackLayout 
+
+                            Orientation="Vertical" 
+
+                            BackgroundColor="Black">
+
+                            <Label Text="{Binding Libelle}"
+
+                                   TextColor="White"></Label>
+
+                            <Label Text="{Binding Date}"
+
+                                   TextColor="White"></Label>
+
+                            <Label Text="{Binding Moniteur}"
+
+                                   TextColor="White"></Label>
+
+                        </StackLayout>
+
+                        <StackLayout
+
+                            Orientation="Horizontal"
+
+                            BackgroundColor="Gray">
+
+                            <Label Text="{Binding Categorie.Libelle}"
+
+                                   TextColor="White"></Label>
+
+                            <Label Text="{Binding Categorie.Description}"
+
+                                   TextColor="White"></Label>
+
+                        </StackLayout>
+
+                    </StackLayout>
+
+                </ViewCell>
+
+            </DataTemplate>
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
