@@ -11,6 +11,7 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using GalaSoft.MvvmLight.Command;
+using GalaSoft.MvvmLight.Messaging;
 
 namespace SkieurMVVML.ViewModel
 {
@@ -24,7 +25,7 @@ namespace SkieurMVVML.ViewModel
             get { return _selectedSkieur; }
             set
             {
-                _selectedSkieur = value;
+                Set(() => SelectedSkieur, ref _selectedSkieur,value);
                 NavigateTo("DetailPage");
             }
         }
@@ -37,14 +38,14 @@ namespace SkieurMVVML.ViewModel
             _dataService = dataService;
             Skieurs = new ObservableCollection<Skieur>();
             _iNavigationService = iNavigationService;
-            NavigateToCommand = new RelayCommand<String>(NavigateTo);
+            NavigateToCommand = new Command<String>(NavigateTo);
             Refresh();
         }
 
         private void NavigateTo(string obj)
         {
-            _iNavigationService.PopToRootAsync();
-            _iNavigationService.NavigateTo(obj, new NavigationParameters { { "", _selectedSkieur } });
+            Messenger.Default.Send<Skieur>(SelectedSkieur);
+            _iNavigationService.NavigateTo(obj, new NavigationParameters { { "", SelectedSkieur } });
         }
 
         public async void Refresh()
