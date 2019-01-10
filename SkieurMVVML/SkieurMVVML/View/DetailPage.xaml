@@ -7,15 +7,15 @@
         <StackLayout>
             <Label x:Name="lblFirstName"
 
-                   Text="{Binding Skieur.FirstName}"></Label>
+                   Text="{Binding SelectedSkieur.FirstName}"></Label>
 
             <Label x:Name="lblLastName"
 
-                   Text="{Binding Skieur.LastName}"
+                   Text="{Binding SelectedSkieur.LastName}"
 
                    Style="{StaticResource lastName}"></Label>
 
-            <ListView ItemsSource="{Binding Skieur.Competences}"
+            <ListView ItemsSource="{Binding SelectedSkieur.Competences}"
 
                       ItemTemplate="{StaticResource detail}">
 

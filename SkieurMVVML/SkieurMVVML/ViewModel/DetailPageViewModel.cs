@@ -1,4 +1,5 @@
 ﻿using GalaSoft.MvvmLight;
+using GalaSoft.MvvmLight.Messaging;
 using SkieurMVVML.IViewModel;
 using SkieurMVVML.Model;
 using System;
@@ -15,11 +16,20 @@ namespace SkieurMVVML.ViewModel
         private INavigationService _iNavigationService;
         public ICommand NavigateToCommand { get; set; }
         public Skieur Skieur { get; set; }
+        private Skieur _selectedSkieur;
+
+        public Skieur SelectedSkieur
+        {
+            get { return _selectedSkieur; }
+            set { Set(() => SelectedSkieur, ref _selectedSkieur, value); }
+        }
+
 
         public DetailPageViewModel(INavigationService iNavigationService)
         {
             _iNavigationService = iNavigationService;
-            Skieur = _iNavigationService.GetParameters().GetValue<Skieur>("");
+            SelectedSkieur = _iNavigationService.GetParameters().GetValue<Skieur>("");
+            Messenger.Default.Register<Skieur>(this, skieur => { SelectedSkieur = skieur; });
             NavigateToCommand = new Command<String>(NavigateTo);
         }
         private void NavigateTo(string obj)
