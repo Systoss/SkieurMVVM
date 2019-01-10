@@ -1,12 +1,13 @@
-﻿using CommonServiceLocator;
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
-//using GalaSoft.MvvmLight.Views;
 using Xamarin.Forms.Navigation;
 using SkieurMVVML.IViewModel;
 using SkieurMVVML.Services;
-using System;
-using System.Collections.Generic;
-using System.Text;
+//using GalaSoft.MvvmLight.Views;
+
 
 namespace SkieurMVVML.ViewModel
 {
